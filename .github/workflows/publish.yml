@@ -9,6 +9,6 @@ jobs:
     - name: Kaniko build
       uses: aevea/action-kaniko@master
       with:
-        image: ${{ env.DOCKERHUB_USERNAME }}/trac
-        username: ${{ env.DOCKERHUB_USERNAME }}
+        image: ${{ vars.DOCKERHUB_USERNAME }}/trac
+        username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
