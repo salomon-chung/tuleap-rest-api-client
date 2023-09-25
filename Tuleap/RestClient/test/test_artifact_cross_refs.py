@@ -1,4 +1,4 @@
-import json
+import json, pathlib
 import unittest
 
 from Tuleap.RestClient.ArtifactParser import ArtifactParser
@@ -6,7 +6,8 @@ from Tuleap.RestClient.ArtifactParser import ArtifactParser
 
 class ArtifactParserTest2(unittest.TestCase):
     def setUp(self):
-        request_file = open("artifact_response_crossrefs.txt", "r")
+        this_dir = pathlib.Path(__file__).parent
+        request_file = open(this_dir.joinpath("artifact_response_crossrefs.txt"), "r")
         response = request_file.read()
         request_file.close()
         self.artifact = ArtifactParser(json.loads(response))
