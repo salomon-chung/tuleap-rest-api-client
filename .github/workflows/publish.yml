@@ -1,0 +1,16 @@
+name: Publish Docker Image
+on: push
+
+jobs:
+  publish_image:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Kaniko build
+      uses: aevea/action-kaniko@master
+      with:
+        image: ${{ vars.GITHUB_REPOSITORY_OWNER }}/trac
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        cache: true
+        cache_registry: ${{ vars.GITHUB_REPOSITORY_OWNER }}/cache
